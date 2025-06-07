@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird - Classic Arcade Game</title>
+    <meta name="description" content="Play Flappy Bird online! Navigate through pipes and try to beat your high score in this challenging arcade game.">
+    <link rel="canonical" href="https://MonsterSurvivors.com/">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="bg-black/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-white">Flappy Bird</h1>
+                <div class="flex space-x-4">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">High Scores</a>
+                    <a href="#" class="nav-link">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main class="pt-20">
+        <!-- 游戏区域 -->
+        <section class="game-section">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1 class="dynamic-title mb-6">Flappy Bird</h1>
+                    <p class="text-xl text-gray-400 mb-8">Tap to fly and navigate through the pipes in this addictive arcade classic!</p>
+                    <div class="game-container glass-effect">
+                        <div class="game-wrapper">
+                            <iframe 
+                                id="gameFrame"
+                                src="https://nebezb.com/floppybird/"
+                                title="Flappy Bird Game"
+                                allowfullscreen
+                                class="w-full h-full">
+                            </iframe>
+                            <button id="fullscreenBtn" class="fullscreen-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                                </svg>
+                                Fullscreen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏说明 -->
+        <section class="info-section bg-black/50 backdrop-blur-lg py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <!-- 如何玩 -->
+                    <div class="advanced-card mb-8">
+                        <h2 class="text-3xl font-bold mb-6">How to Play</h2>
+                        <ol class="list-decimal list-inside text-gray-400 space-y-4">
+                            <li>Tap the screen or click your mouse to make the bird fly up.</li>
+                            <li>Release to let the bird fall.</li>
+                            <li>Navigate through the pipes without touching them.</li>
+                            <li>Each pipe you pass through adds to your score.</li>
+                            <li>Beat your high score and share it with friends!</li>
+                        </ol>
+                    </div>
+
+                    <!-- 游戏特性 -->
+                    <div class="advanced-card mb-8">
+                        <h2 class="text-3xl font-bold mb-6">Game Features</h2>
+                        <ul class="list-disc list-inside text-gray-400 space-y-4">
+                            <li>Simple yet challenging gameplay</li>
+                            <li>Classic arcade style graphics</li>
+                            <li>Easy to learn, hard to master mechanics</li>
+                            <li>Competitive high score system</li>
+                            <li>Perfect for quick gaming sessions</li>
+                        </ul>
+                    </div>
+
+                    <!-- 游戏技巧 -->
+                    <div class="advanced-card mb-8">
+                        <h2 class="text-3xl font-bold mb-6">Tips for Success</h2>
+                        <ul class="list-disc list-inside text-gray-400 space-y-4">
+                            <li>Tap with a consistent rhythm</li>
+                            <li>Focus on the center of the pipes</li>
+                            <li>Practice timing your taps</li>
+                            <li>Keep a steady pace</li>
+                            <li>Learn from each failed attempt</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏历史 -->
+        <section class="history-section bg-black/70 backdrop-blur-lg py-16">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto">
+                    <div class="advanced-card">
+                        <h2 class="text-3xl font-bold mb-6">Game History</h2>
+                        <p class="text-gray-400 mb-8">
+                            Flappy Bird is a popular mobile game that gained worldwide attention for its simple yet challenging gameplay. 
+                            The game requires precise timing and quick reflexes as players navigate through increasingly difficult pipe obstacles.
+                        </p>
+                        <div class="text-center">
+                            <a href="#" class="gradient-button hover-effect">
+                                Share Your Score
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-black/80 backdrop-blur-md py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-gray-500">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> MonsterSurvivors.com. All rights reserved.</p>
+                <p class="mt-2">Flappy Bird is a trademark of its respective owners. This site provides a platform to play the game.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 获取元素
+        const gameFrame = document.getElementById('gameFrame');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+        // 检查浏览器是否支持全屏API
+        const isFullscreenSupported = document.fullscreenEnabled || 
+                                     document.webkitFullscreenEnabled || 
+                                     document.msFullscreenEnabled;
+
+        if (!isFullscreenSupported) {
+            fullscreenBtn.style.display = 'none';
+        }
+
+        // 全屏按钮点击事件
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement && 
+                !document.webkitFullscreenElement && 
+                !document.msFullscreenElement) {
+                // 请求全屏
+                if (gameFrame.requestFullscreen) {
+                    gameFrame.requestFullscreen();
+                } else if (gameFrame.webkitRequestFullscreen) {
+                    gameFrame.webkitRequestFullscreen();
+                } else if (gameFrame.msRequestFullscreen) {
+                    gameFrame.msRequestFullscreen();
+                }
+            } else {
+                // 退出全屏
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        });
+
+        // 监听全屏状态变化
+        document.addEventListener('fullscreenchange', () => {
+            updateFullscreenButton();
+        });
+
+        document.addEventListener('webkitfullscreenchange', () => {
+            updateFullscreenButton();
+        });
+
+        function updateFullscreenButton() {
+            if (document.fullscreenElement || 
+                document.webkitFullscreenElement || 
+                document.msFullscreenElement) {
+                fullscreenBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M5 16h3v3h10v-3h3v-10h-3V5h-10v3H5v10zm12-9h2v2h-2V7zm-4 4h2v6h-2v-6zm-8-4v2h2v-2H5z"/>
+                    </svg>
+                    Exit Fullscreen
+                `;
+            } else {
+                fullscreenBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                    </svg>
+                    Fullscreen
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
